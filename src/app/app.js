@@ -3,6 +3,7 @@ import { react2angular } from 'react2angular'
 import ReactButton from './reactButton/Reactbutton';
 
 import '../style/app.css';
+import { CounterSerivce } from './counter.service.js';
 
 let app = () => {
   return {
@@ -20,9 +21,13 @@ class AppCtrl {
 
 const MODULE_NAME = 'app';
 
-angular.module(MODULE_NAME, [])
+export const appModule = angular.module(MODULE_NAME, []);
+
+appModule
   .directive('app', app)
   .controller('AppCtrl', AppCtrl)
-  .component('reactButton', react2angular(ReactButton, ['buttonText']));
+  .component('reactButton', react2angular(ReactButton, ['buttonText'], ['CounterSerivce']));
+
+CounterSerivce(appModule)
 
 export default MODULE_NAME;

@@ -7,15 +7,29 @@ export default class ReactButton extends Component {
     this.handleOnClick = this.handleOnClick.bind(this);
 
     this.state = {
-      counter: 10
+      counter: 0
     };
   }
 
-  handleOnClick(e) {
+  componentDidMount() {
+    const counter = this.props.CounterSerivce.getCounter();
+
     this.setState({
-      counter: ++this.state.counter
+      counter: counter
     });
   }
+
+  handleOnClick(e) {
+    const currentCount = ++this.state.counter;
+
+    this.props.CounterSerivce.setCounter(currentCount);
+
+    const newCount = this.props.CounterSerivce.getCounter();
+
+    this.setState({
+      counter: newCount
+    });
+  } // end handleOnClick
 
 
   render() {
