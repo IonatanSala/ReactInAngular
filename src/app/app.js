@@ -1,6 +1,6 @@
 import angular from 'angular';
 import { react2angular } from 'react2angular'
-import MyComponent from './reactButton/Reactbutton';
+import ReactButton from './reactButton/Reactbutton';
 
 import '../style/app.css';
 
@@ -23,6 +23,6 @@ const MODULE_NAME = 'app';
 angular.module(MODULE_NAME, [])
   .directive('app', app)
   .controller('AppCtrl', AppCtrl)
-  .component('myComponent', react2angular(MyComponent, ['buttonText']));
+  .component('reactButton', react2angular(ReactButton, ['buttonText']));
 
 export default MODULE_NAME;

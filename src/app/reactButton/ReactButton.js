@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 
-export default class MyComponent extends Component {
+export default class ReactButton extends Component {
   constructor(props) {
     super(props)
 
@@ -8,7 +8,7 @@ export default class MyComponent extends Component {
 
     this.state = {
       counter: 10
-    }
+    };
   }
 
   handleOnClick(e) {
