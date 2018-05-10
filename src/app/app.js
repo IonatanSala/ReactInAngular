@@ -26,6 +26,7 @@ export const appModule = angular.module(MODULE_NAME, []);
 appModule
   .directive('app', app)
   .controller('AppCtrl', AppCtrl)
+
   .component('reactButton', react2angular(ReactButton, ['buttonText'], ['CounterSerivce']));
 
 CounterSerivce(appModule)

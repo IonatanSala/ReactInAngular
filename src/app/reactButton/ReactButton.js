@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { Button, Wrapper } from './ReactButton.styles'
 
 export default class ReactButton extends Component {
   constructor(props) {
@@ -34,10 +35,11 @@ export default class ReactButton extends Component {
 
   render() {
     return (
-      <div>
-        <button onClick={this.handleOnClick}>{this.props.buttonText}</button>
+      <Wrapper>
+        <h2>React Component</h2>
+        <Button onClick={this.handleOnClick}>{this.props.buttonText}</Button>
         <span style={{marginLeft: '10px'}}>{this.state.counter}</span>
-      </div>
+      </Wrapper>
     )
   }
 }
