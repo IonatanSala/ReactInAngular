@@ -10,6 +10,6 @@ export const Button = styled.button`
 
 export const Wrapper = styled.section`
   padding: 4em;
-  border: 2px dashed red;
+  border: 2px dashed #E84B1E;
   background-color: #373B5E;
 `;
