@@ -13,10 +13,18 @@ let app = () => {
   }
 };
 
-class AppCtrl {
-  constructor() {
+function AppCtrl($scope, CounterSerivce) {
     this.url = 'https://github.com/preboot/angular-webpack';
-  }
+    this.counter = { value: 0 };
+    let self = this;
+
+    this.counter.value = CounterSerivce.getCounter();
+
+    CounterSerivce.subscribe(newCounter => {
+      $scope.$apply(() => {
+        self.counter.value = newCounter;
+      });
+    });
 }
 
 const MODULE_NAME = 'app';
@@ -25,7 +33,7 @@ export const appModule = angular.module(MODULE_NAME, []);
 
 appModule
   .directive('app', app)
-  .controller('AppCtrl', AppCtrl)
+  .controller('AppCtrl', ['$scope', 'CounterSerivce', AppCtrl])
 
   .component('reactButton', react2angular(ReactButton, ['buttonText'], ['CounterSerivce']));
 
