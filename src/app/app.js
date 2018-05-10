@@ -5,6 +5,12 @@ import ReactButton from './reactButton/Reactbutton';
 import '../style/app.css';
 import { CounterSerivce } from './counter.service.js';
 
+const MODULE_NAME = 'app';
+export const appModule = angular.module(MODULE_NAME, []);
+CounterSerivce(appModule)
+
+
+// app directive
 let app = () => {
   return {
     template: require('./app.html'),
@@ -25,18 +31,12 @@ function AppCtrl($scope, CounterSerivce) {
         self.counter.value = newCounter;
       });
     });
-}
-
-const MODULE_NAME = 'app';
-
-export const appModule = angular.module(MODULE_NAME, []);
+} // end AppCtrl
 
 appModule
   .directive('app', app)
   .controller('AppCtrl', ['$scope', 'CounterSerivce', AppCtrl])
-
   .component('reactButton', react2angular(ReactButton, ['buttonText'], ['CounterSerivce']));
 
-CounterSerivce(appModule)
 
 export default MODULE_NAME;
